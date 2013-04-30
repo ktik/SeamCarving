@@ -9,7 +9,6 @@ public class SeamCarver {
 	private int[][] edgeTo;
 	private double[] distTo;
 	private int[] seam;
-	//private int[] removedSeam;
 	
 	public SeamCarver(Picture picture) {
 		
@@ -20,10 +19,6 @@ public class SeamCarver {
 		isEnergyMatrixTransposed = false;
 		edgeTo = new int[width][height];
 		distTo = new double[width];
-		
-//		for (int i = 0; i < width; i++) {
-//			distTo[i] = 195075.0;
-//		}
 		seam = new int[height];
 		for (int j = 0; j < height; j++)
         {
@@ -143,12 +138,7 @@ public class SeamCarver {
 		}	
 	}
 	public void removeHorizontalSeam(int[] a) {
-		
-//		for (int i=0; i<a.length; i++)
-//			System.out.println("row: "+i+", col: "+a[i]);
-//		removeVerticalSeam(a);
-//		isEnergyMatrixTransposed = false;
-//		transposeEnergyMatrix();
+
 		if (height <= 1) {
 			throw new IllegalArgumentException();
 		}
@@ -174,7 +164,6 @@ public class SeamCarver {
 				newPic.set(w, h, p.get(w, h));
 			}
 		}
-		//removedSeam = a;
 		reInitialize();	
 	}
 	public void removeVerticalSeam(int[] a) {
@@ -185,21 +174,7 @@ public class SeamCarver {
 		
 		if (a.length != height)
 			throw new IllegalArgumentException();
-		
-		/*int prev = a[0];
-		if (prev < 0 || prev > width-1)
-			throw new IllegalArgumentException();
-		
-		for (int i = 1; i < a.length; i++) {
-			int c = a[i];
-			//System.out.println("Prev: "+prev+", Curr: "+c);
-			if ((c > prev + 1) && (c < prev - 1))
-				throw new IllegalArgumentException();
-			if (c < 0 || c > width-1)
-				throw new IllegalArgumentException();
-			prev = c;
-		}*/
-		
+	
 		newPic = new Picture(width-1, height);
 		//StdOut.printf("New image is "+(width-1)+" x "+height+"\n");
 		
